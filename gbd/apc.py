@@ -11,6 +11,7 @@ from gbd.common import (
     const as _const,
     utils as _utils,
 )
+import joblib
 
 plt.rcParams['figure.dpi'] = 500
 plt.rcParams['font.size'] = 12
@@ -337,7 +338,7 @@ def run(
     output_dir.mkdir(parents=True, exist_ok=True)
     output_dir = _utils.unique_path(output_dir, name)
 
-    if raw:
+    if raw is not None:
         LOGGER.info(f"Processing APC data ...")
 
         apc_data(
@@ -473,19 +474,19 @@ if __name__ == '__main__':
 
     os.chdir(pathlib.Path(__file__).parent.parent)
 
-    # df: pd.DataFrame = joblib.load(pathlib.Path("data") / "data_cause_of_death_or_injury.pkl")
-    #
+    df: pd.DataFrame = joblib.load(pathlib.Path("data") / "data_cause_of_death_or_injury.pkl")
+
     # run(
     #     raw=df,
     #     title="Anxiety Disorders",
     #     description="Anxiety Disorders",
-    #     name="AnxietyDisorders.APC.1990-2019",
+    #     name="AnxietyDisorders.APC.1992-2021",
     #     cause="Anxiety disorders",
     #     interval=5,
-    #     years=(1990, 2019)
+    #     years=(1992, 2021)
     # )
     run(
-        both_xlsx_path=pathlib.Path("output/AnxietyDisorders.APC.1990-2019_1/APC.Analysis.Both.xlsx"),
-        f_xlsx_path=pathlib.Path("output/AnxietyDisorders.APC.1990-2019_1/APC.Analysis.Female.xlsx"),
-        m_xlsx_path=pathlib.Path("output/AnxietyDisorders.APC.1990-2019_1/APC.Analysis.Male.xlsx"),
+        both_xlsx_path=pathlib.Path("output/AnxietyDisorders.APC.1992-2021/APC.Analysis.Both.xlsx"),
+        f_xlsx_path=pathlib.Path("output/AnxietyDisorders.APC.1992-2021/APC.Analysis.Female.xlsx"),
+        m_xlsx_path=pathlib.Path("output/AnxietyDisorders.APC.1992-2021/APC.Analysis.Male.xlsx"),
     )

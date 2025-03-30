@@ -383,5 +383,7 @@ if __name__ == '__main__':
 
     run(
         df,
-        asdr_root=pathlib.Path("output/AnxietyDisorders.Statistics&YearTrend&LocationASDR.1990-2019/Location ASDR"),
+        name="AnxietyDisorders.DALYs&AAPC.2021",
+        asdr_root=pathlib.Path("output/AnxietyDisorders.Statistics&YearTrend&LocationASDR.1992-2021/Location ASDR"),
+        year=2021,
     )
